@@ -1,11 +1,8 @@
 <template>
-    <div class="bg-red-50 w-full rounded-full p-2 flex justify-between">
-        <div class="flex">
-            <img src="/favicon.ico" class="w-7"/>
-            <p class="pl-1 my-auto">HERMANN<strong>WITTE</strong></p>
+    <div class="h-full w-full bg-white">
+        <div class="absolute bottom-0 w-full">
+            <img class="mx-auto h-[120%]" src="/test.png" />
         </div>
-        <div>
-            test
-        </div>
+        <Name />
     </div>
 </template>

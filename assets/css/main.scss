@@ -4,7 +4,13 @@ html,body, #__nuxt, #__layout{
 }
 
 html {
-    background-color: #242526;
     font-family: "-apple-system", "BlinkMacSystemFont", "Avenir Next", "Avenir", "Helvetica", "Helvetica Neue", "Ubuntu", "Roboto", "Noto", "Segoe UI", "Arial", sans-serif;
     font-variant-numeric: tabular-nums;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    background-color: #181818;
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
