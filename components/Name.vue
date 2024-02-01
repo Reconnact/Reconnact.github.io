@@ -1,5 +1,5 @@
 <template>
-    <div class="absolute bottom-2 w-full">
+    <div class="absolute bottom-2 w-full text-white">
         <div class="marquee">
             <h1 class="marquee__content">
             Hermann Witte -

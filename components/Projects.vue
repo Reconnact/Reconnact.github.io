@@ -12,12 +12,10 @@
           />
         </div>
         <div class="flex flex-col items-center">
-          <!-- Centering items with "items-center" class -->
           <h1 class="text-center mb-10 text-white text-3xl">
             Technologies I like to work with
           </h1>
           <div class="flex flex-wrap justify-center gap-8">
-            <!-- Updated the class to include justify-center -->
             <div
               v-for="tech in technologies"
               :key="tech.name"
