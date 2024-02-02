@@ -40,7 +40,7 @@
     </div>
     
     <div class="hanger !right-0 w-fit !flex flex-col gap-6 pr-28 text-5xl z-50 relative">
-        <div class="absolute top-[-150px]" ref="arrow">
+        <div class="absolute top-[-125px]" ref="arrow">
           <img src="arrow.svg" />
         </div>
         <span>Intern</span>
@@ -64,14 +64,13 @@ const scrollHandler = () => {
 
   if (imageRef.value) {
     const scrollTop = window.scrollY;
-    const translateImageY = scrollTop * 0.35; 
-    console.log(translateImageY)
+    const translateImageY = scrollTop * 0.25; 
     imageRef.value.style.transform = `translateY(${translateImageY}px)`;
   }
 
   if (arrow.value) {
     const scrollTop = window.scrollY;
-    const translateArrowY = scrollTop * -0.15 - 150; 
+    const translateArrowY = scrollTop * -0.1 - 125; 
     arrow.value.style.top = `${translateArrowY}px`;
   }
 };

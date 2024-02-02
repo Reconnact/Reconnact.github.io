@@ -52,7 +52,7 @@ export default {
     },
     handleScroll() {
       const scrollPosition = window.scrollY || window.pageYOffset;
-      const reverseTranslation = -scrollPosition % window.innerWidth; 
+      const reverseTranslation = (-scrollPosition % window.innerWidth) * 0.8; 
       this.$refs.marquee_1.style.transform = `translateX(${reverseTranslation}px)`;
       this.$refs.marquee_2.style.transform = `translateX(${reverseTranslation}px)`;
     },
