@@ -22,10 +22,10 @@
               class="group w-fit flex flex-col"
             >
               <nuxt-link :href="tech.link" target="_blank">
-                <Icon :name="tech.icon" :size="80" />
+                <Icon :name="tech.icon" size="80" />
               </nuxt-link>
               <span
-                class="text-center text-sm text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                class="text-center text-sm text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               >
                 {{ tech.name }}
               </span>

@@ -1,6 +1,6 @@
 <template>
     <div class="absolute w-full p-10 top-0 left-0 z-50 flex justify-between text-lg">
-        <nuxt-link class="flex px-6 gap-2" to="/">
+        <nuxt-link class="flex px-6 gap-2" to="/" ref="creator">
             <Icon name="la:copyright" size="20" class="my-auto"/><span>HERMANN WITTE</span>
         </nuxt-link>
         <div>
@@ -40,13 +40,13 @@
     </div>
     
     <div class="hanger !right-0 w-fit !flex flex-col gap-6 pr-28 text-5xl z-50 relative">
-        <div class="absolute top-[-100px]" ref="arrow">
+        <div class="absolute top-[-150px]" ref="arrow">
           <img src="arrow.svg" />
         </div>
         <span>Intern</span>
         <span>Developer & Student</span>
     </div>
-    <div class="h-[112.5%] w-full bg-[rgb(135_140_140)] flex items-center relative">
+    <div class="h-[120%] w-full bg-[rgb(135_140_140)] flex items-center relative">
         <div class="absolute bottom-0 w-full h-full" >
             <img class="mx-auto pt-[5%] object-cover h-full -z-10" ref="imageRef" src="/test.png" />
         </div>
@@ -64,14 +64,14 @@ const scrollHandler = () => {
 
   if (imageRef.value) {
     const scrollTop = window.scrollY;
-    const translateImageY = scrollTop * 0.3; 
+    const translateImageY = scrollTop * 0.35; 
     console.log(translateImageY)
     imageRef.value.style.transform = `translateY(${translateImageY}px)`;
   }
 
   if (arrow.value) {
     const scrollTop = window.scrollY;
-    const translateArrowY = scrollTop * -0.15 - 100; 
+    const translateArrowY = scrollTop * -0.15 - 150; 
     arrow.value.style.top = `${translateArrowY}px`;
   }
 };

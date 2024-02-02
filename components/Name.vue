@@ -1,16 +1,15 @@
 <template>
-    <div class="absolute bottom-36 w-full text-white">
-      <div class="marquee">
-        <h1 class="marquee__content">
-          Hermann Witte -
-        </h1>
-        <h1 aria-hidden="true" class="marquee__content">
-          Hermann Witte -
-        </h1>
-      </div>
+  <div class="absolute bottom-44 w-full text-white">
+    <div class="marquee">
+      <h1 class="marquee__content" ref="marquee_1">
+        Hermann Witte -
+      </h1>
+      <h1 aria-hidden="true" class="marquee__content" ref="marquee_2">
+        Hermann Witte -
+      </h1>
+    </div>
   </div>
 </template>
-
 
 <style scoped lang="scss">
 .marquee {
@@ -29,21 +28,35 @@
   justify-content: space-around;
   gap: var(--gap);
   width: 100%;
-  animation: scroll 15s linear infinite;
 }
 
 h1 {
     font-size: max(14vw);
     line-height: normal;
 }
-
-@keyframes scroll {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(calc(0 - var(--gap)));
-  }
-}
-
 </style>
+
+<script>
+export default {
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+    this.pauseMarqueeAnimation();
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    pauseMarqueeAnimation() {
+      this.$refs.marquee_1.style.animationPlayState = 'paused';
+      this.$refs.marquee_2.style.animationPlayState = 'paused';
+    },
+    handleScroll() {
+      const scrollPosition = window.scrollY || window.pageYOffset;
+      const reverseTranslation = -scrollPosition % window.innerWidth; 
+      this.$refs.marquee_1.style.transform = `translateX(${reverseTranslation}px)`;
+      this.$refs.marquee_2.style.transform = `translateX(${reverseTranslation}px)`;
+    },
+  },
+};
+</script>
+
