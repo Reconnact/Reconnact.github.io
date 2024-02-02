@@ -1,5 +1,5 @@
 <template>
-    <div class="py-14">
+    <div class="py-14 relative z-50 bg-[#181818]">
       <div class="w-fit mx-auto flex flex-col gap-16">
         <div class="flex flex-col gap-5">
           <img

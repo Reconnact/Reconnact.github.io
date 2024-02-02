@@ -1,16 +1,16 @@
 <template>
-    <div class="absolute bottom-2 w-full text-white">
-        <div class="marquee">
-            <h1 class="marquee__content">
-            Hermann Witte -
-            </h1>
-
-            <h1 aria-hidden="true" class="marquee__content">
-            Hermann Witte -
-            </h1>
-        </div>
-    </div>
+    <div class="absolute bottom-36 w-full text-white">
+      <div class="marquee">
+        <h1 class="marquee__content">
+          Hermann Witte -
+        </h1>
+        <h1 aria-hidden="true" class="marquee__content">
+          Hermann Witte -
+        </h1>
+      </div>
+  </div>
 </template>
+
 
 <style scoped lang="scss">
 .marquee {
@@ -29,20 +29,21 @@
   justify-content: space-around;
   gap: var(--gap);
   width: 100%;
-  animation: scroll 10s linear infinite;
+  animation: scroll 15s linear infinite;
 }
 
 h1 {
-    font-size: max(13.8vw);
+    font-size: max(14vw);
     line-height: normal;
 }
 
 @keyframes scroll {
   from {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(calc(-100% - var(--gap)));
+    transform: translateX(calc(0 - var(--gap)));
   }
 }
+
 </style>
