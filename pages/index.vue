@@ -1,4 +1,4 @@
 <template>
-    <AppHeader />
-    <Technologies/>
+  <AppHeader />
+  <Technologies />
 </template>

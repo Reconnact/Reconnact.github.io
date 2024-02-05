@@ -4,12 +4,17 @@ html,body, #__nuxt, #__layout{
 }
 
 html {
-    font-family: "-apple-system", "BlinkMacSystemFont", "Avenir Next", "Avenir", "Helvetica", "Helvetica Neue", "Ubuntu", "Roboto", "Noto", "Segoe UI", "Arial", sans-serif;
-    font-variant-numeric: tabular-nums;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     background-color: #181818;
     color: white;
+    font-family: NeueMontreal;
+}
+
+
+@font-face {
+    font-family: NeueMontreal;
+    src: url("/NeueMontreal-Regular.otf") format("opentype");
 }
 
 html::-webkit-scrollbar {
