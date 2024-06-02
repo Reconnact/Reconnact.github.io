@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute w-full p-10 top-0 left-0 z-50 flex justify-between text-lg">
+  <div class="absolute w-full px-3 sm:px-10 py-10 top-0 left-0 z-50 flex justify-between text-lg">
     <nuxt-link
       ref="creator"
       class="flex px-6 gap-2"
@@ -31,7 +31,7 @@
       </ul>
     </div>-->
   </div>
-  <div class="hanger z-50">
+  <div class="hanger z-50 hidden md:inline-block">
     <p class="pl-12 text-[18px]">
       <span>Located</span><br>
       <span>in Switzerland</span>
@@ -83,7 +83,7 @@
     </div>
   </div>
     
-  <div class="hanger !right-0 w-fit !flex flex-col gap-4 pr-28 text-5xl z-50 relative">
+  <div class="hanger !right-0 w-fit hidden md:!flex flex-col gap-4 pr-5 xl:pr-28 text-5xl z-50 relative">
     <div
       ref="arrow"
       class="absolute top-[-125px]"
@@ -150,7 +150,6 @@ onUnmounted(() => {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  display: inline-block;
 }
 
 p {
