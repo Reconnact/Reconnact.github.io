@@ -11,7 +11,7 @@
         class="my-auto"
       /><span>HERMANN WITTE</span>
     </nuxt-link>
-    <div>
+    <!--<div>
       <ul class="flex px-6 gap-10">
         <li>
           <nuxt-link to="/work">
@@ -29,7 +29,7 @@
           </nuxt-link>
         </li>
       </ul>
-    </div>
+    </div>-->
   </div>
   <div class="hanger z-50">
     <p class="pl-12 text-[18px]">
@@ -88,7 +88,7 @@
       ref="arrow"
       class="absolute top-[-125px]"
     >
-      <img src="arrow.svg">
+      <img src="../public/arrow.svg">
     </div>
     <span class="text-4xl">
       <span>Intern</span><br>
