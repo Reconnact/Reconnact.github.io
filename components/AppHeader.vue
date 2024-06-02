@@ -95,12 +95,12 @@
       <span>Developer & Student</span>
     </span>
   </div>
-  <div class="h-[120%] w-full bg-[rgb(135_140_140)] flex items-center relative">
-    <div class="absolute bottom-0 w-full h-full">
+  <div class="h-[120%] w-full bg-[#999D9D] flex items-center relative">
+    <div class="absolute top-[-5%] bottom-0 w-full h-full">
       <img
         ref="imageRef"
-        class="mx-auto pt-[5%] object-cover h-full -z-10"
-        src="/test.png"
+        class="mx-auto object-cover h-[110%] -z-10"
+        src="/test2.png"
       >
     </div>
     <Name />
