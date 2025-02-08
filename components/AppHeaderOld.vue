@@ -91,8 +91,8 @@
       <img src="../public/arrow.svg">
     </div>
     <span class="text-4xl">
-      <span>Intern</span><br>
-      <span>Developer & Student</span>
+      <span>Student &</span><br>
+      <span>Software Developer</span>
     </span>
   </div>
   <div class="h-[120%] w-full bg-[#999D9D] flex items-center relative">

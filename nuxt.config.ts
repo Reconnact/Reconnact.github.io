@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/google-fonts'
   ],
   css: ['~/assets/css/main.scss'],
   components: [
@@ -11,4 +12,10 @@ export default defineNuxtConfig({
       path: '~/components',
     },
   ],
+  googleFonts: {
+    families: {
+      Inter: [400, 500, 700], // Define the weights you need
+    },
+    display: 'swap', // Improves loading performance
+  },
 });

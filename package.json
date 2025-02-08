@@ -27,6 +27,8 @@
     "vue-tsc": "^1.8.27"
   },
   "dependencies": {
+    "@gitgraph/js": "^1.4.0",
+    "@nuxtjs/google-fonts": "^3.2.0",
     "@typescript-eslint/parser": "^6.20.0",
     "eslint-plugin-nuxt": "^4.0.0"
   }
