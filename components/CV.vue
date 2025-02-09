@@ -3,7 +3,7 @@
     <div class="mx-auto flex flex-col gap-2">
       <div class="flex w-full justify-evenly bg-[#303030] h-9 p-1 rounded-lg relative overflow-hidden">
         <div
-          class="cv-slider"
+          class="absolute mx-1 w-[48%] sm:w-[48.4%] h-7 bg-[#171717] rounded-md transition-all duration-300 ease-in-out"
           :class="{ 'slide-left': education, 'slide-right': work }"
         />
 
@@ -150,19 +150,8 @@ const educationList: Array<{
   }
 ];
 </script>
-Information Technology Secondary School - 
-<style lang="scss">
-.cv-slider {
-  position: absolute;
-  margin-left: 1%;
-  margin-right: 1%;
-  width: 48.4%;
-  height: 28px;
-  background-color: #171717;
-  border-radius: 6px;
-  transition: transform 0.3s ease-in-out;
-}
 
+<style lang="scss">
 .slide-left {
   transform: translateX(52%);
 }
