@@ -40,7 +40,7 @@
             />
           </a>
           <a
-            href="mailto:hermann.witte@alpha-lab.net    "
+            href="mailto:hermann.witte@alpha-lab.net"
             target="_blank"
             class="text-[#848484]"
             title="E-Mail"
