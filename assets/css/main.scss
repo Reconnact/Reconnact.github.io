@@ -26,3 +26,14 @@ html::-webkit-scrollbar {
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', sans-serif;
 }
+
+.default-hover {
+    color: #848484;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
+}
+
+.default-hover:hover {
+    color: #F5F5F5;
+}

@@ -20,7 +20,7 @@
           <a
             href="https://linkedin.com/in/hermannwitte"
             target="_blank"
-            class="text-[#848484]"
+            class="default-hover"
             title="LinkedIn"
           >
             <Icon
@@ -31,7 +31,7 @@
           <a
             href="https://github.com/Reconnact"
             target="_blank"
-            class="text-[#848484]"
+            class="default-hover"
             title="Github"
           >
             <Icon
@@ -42,7 +42,7 @@
           <a
             href="mailto:hermann.witte@alpha-lab.net"
             target="_blank"
-            class="text-[#848484]"
+            class="default-hover"
             title="E-Mail"
           >
             <Icon

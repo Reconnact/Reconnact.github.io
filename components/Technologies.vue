@@ -6,7 +6,7 @@
     <p class="mt-2 font-medium text-[#848484] max-w-xl">
       I work with a variety of modern technologies to bring my projects to life. These are the technologies I currently use the most:
     </p>
-    <div class="mt-8 grid grid-cols-2 sm:grid-cols-6 gap-x-12 gap-y-8 items-center">
+    <div class="mt-8 grid grid-cols-2 sm:grid-cols-6 gap-x-12 gap-y-8 items-center sm:px-4">
       <div
         v-for="tech in technologies"
         :key="tech.name"
@@ -16,7 +16,7 @@
           <nuxt-link
             :href="tech.link"
             target="_blank"
-            class="text-[#848484] hover:text-[#203F4D] transition-color duration-500 h-fit"
+            class="default-hover !duration-500 h-fit"
           >
             <Icon
               :name="tech.icon"
@@ -24,7 +24,7 @@
             />
           </nuxt-link>
           <span
-            class="text-center text-sm text-[#848484] font-semibold group-hover:text-white opacity-100 transition-all duration-500 group-hover:opacity-100 sm:opacity-0"
+            class="text-center text-sm font-semibold default-hover group-hover:text-[#F5F5F5] opacity-100 !transition-all !duration-500 group-hover:opacity-100 sm:opacity-0"
           >
             {{ tech.name }}
           </span>
