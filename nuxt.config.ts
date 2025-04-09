@@ -7,16 +7,21 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxt/icon'
   ],
+
   css: ['~/assets/css/main.scss'],
+
   components: [
     {
       path: '~/components',
     },
   ],
+
   googleFonts: {
     families: {
       Inter: [400, 500, 700], // Define the weights you need
     },
     display: 'swap', // Improves loading performance
   },
+
+  compatibilityDate: '2025-04-09',
 });

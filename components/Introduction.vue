@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col items-start gap-8 md:flex-row-reverse md:items-center md:justify-between">
+  <div class="flex flex-col items-start pt-3 gap-8 md:flex-row-reverse md:items-center md:justify-between">
     <img
       alt="Portrait"
       width="175"
       height="175"
-      class="rounded-lg"
+      class="rounded-lg transition-transform duration-300 transform hover:scale-110"
       style="color: transparent;"
-      src="/me.jpeg"
+      src="/me.png"
     >
     <div class="flex flex-col">
       <h1 class="title text-4xl font-bold">
