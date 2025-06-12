@@ -13,18 +13,13 @@
         class="flex justify-center"
       >
         <div class="group flex flex-col items-center w-[60px]">
-          <nuxt-link
-            :href="tech.link"
-            target="_blank"
-            class="default-hover !duration-500 h-fit"
-          >
-            <Icon
-              :name="tech.icon"
-              size="60"
-            />
-          </nuxt-link>
+          <Icon
+            :name="tech.icon"
+            size="60"
+            style="color: #848484;"
+          />
           <span
-            class="text-center text-sm font-semibold default-hover group-hover:text-[#F5F5F5] opacity-100 !transition-all !duration-500 group-hover:opacity-100 sm:opacity-0"
+            class="text-center text-sm font-semibold default-hover opacity-100 !transition-all !duration-500 group-hover:opacity-100 sm:opacity-0"
           >
             {{ tech.name }}
           </span>
