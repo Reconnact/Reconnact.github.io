@@ -118,8 +118,18 @@ const educationList: Array<{
   start: string; 
   end: string; 
   notes: null; 
-  srcClass?: string; // Mark it as optional
+  srcClass?: string;
 }> = [
+  { 
+    name: 'University of Applied Sciences', 
+    href: 'https://www.htw-berlin.de/en/', 
+    src: '/htw.png', 
+    srcClass: '!h-3/4',
+    description: 'Bsc in Business Information Technology', 
+    start: 'October 2025', 
+    end: 'Present', 
+    notes: null
+  }, 
   { 
     name: 'Eastern Switzerland University of Applied Sciences', 
     href: 'https://www.ost.ch/en/', 
@@ -127,7 +137,7 @@ const educationList: Array<{
     srcClass: '!h-full',
     description: 'Bsc in Business Information Technology', 
     start: 'September 2024', 
-    end: 'Present', 
+    end: 'September 2025', 
     notes: null
   }, 
   { 
