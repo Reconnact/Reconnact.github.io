@@ -13,7 +13,7 @@
         Hey, I'm Hermann
       </h1>
       <p class="mt-4 font-medium text-[#848484]">
-        19-year-old software developer & student from Switzerland🇨🇭
+        {{ age }}-year-old software developer & student from Germany 🇩🇪
       </p>
       <div class="mt-8 flex items-center gap-8">
         <div class="flex gap-6">
@@ -55,3 +55,18 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const birthDate = new Date('2005-08-05');
+
+const age = computed(() => {
+  const now = new Date();
+  let years = now.getFullYear() - birthDate.getFullYear();
+  const hasHadBirthdayThisYear =
+    now.getMonth() > birthDate.getMonth() ||
+    (now.getMonth() === birthDate.getMonth() && now.getDate() >= birthDate.getDate());
+
+  if (!hasHadBirthdayThisYear) years--;
+  return years;
+});
+</script>
