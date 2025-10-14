@@ -19,7 +19,7 @@
             style="color: #848484;"
           />
           <span
-            class="text-center text-sm font-semibold default-hover opacity-100 !transition-all !duration-500 group-hover:opacity-100 sm:opacity-0"
+            class="!text-[#848484] text-center text-sm font-semibold default-hover opacity-100 !transition-all !duration-500 group-hover:opacity-100 sm:opacity-0"
           >
             {{ tech.name }}
           </span>
