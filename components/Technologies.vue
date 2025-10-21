@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col pb-14">
     <h1 class="title text-3xl font-bold">
-      Current technologies
+      Technologies
     </h1>
     <p class="mt-2 font-medium text-[#848484] max-w-xl">
       I work with a variety of modern technologies to bring my projects to life. These are the technologies I currently use the most:
@@ -33,7 +33,7 @@
 <script setup lang="ts">
 const technologies = [
   {icon: 'file-icons:go', link: 'https://go.dev/', name: 'GoLang'},
-  {icon: 'ri:java-fill', link: 'https://www.java.com/', name: 'Java'},
+  {icon: 'mdi:kubernetes', link: 'https://kubernetes.io/', name: 'Kubernetes'},
   {icon: 'akar-icons:postgresql-fill', link: 'https://www.postgresql.org/', name: 'PostgreSQL'},
   {icon: 'lineicons:typescript', link: 'https://www.typescriptlang.org/', name: 'TypeScript'},
   {icon: 'lineicons:nuxt', link: 'https://nuxt.com/', name: 'Nuxt'},
