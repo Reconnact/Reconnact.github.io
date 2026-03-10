@@ -13,7 +13,8 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-fonts',
-    '@nuxt/icon'
+    '@nuxt/icon',
+    'nuxt-gtag'
   ],
 
   css: ['~/assets/css/main.scss'],
@@ -32,4 +33,8 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-04-09',
+
+  gtag: {
+    id: 'G-F9MQXHR2RV'
+  }
 });
