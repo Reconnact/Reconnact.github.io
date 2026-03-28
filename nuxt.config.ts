@@ -27,14 +27,21 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Inter: [400, 500, 700], // Define the weights you need
+      Inter: [400, 500, 700],
     },
-    display: 'swap', // Improves loading performance
+    display: 'swap',
   },
 
   compatibilityDate: '2025-04-09',
 
   gtag: {
-    id: 'G-F9MQXHR2RV'
+    id: 'G-F9MQXHR2RV',
+    initCommands: [
+      ['consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        wait_for_update: 500,
+      }],
+    ],
   }
 });
