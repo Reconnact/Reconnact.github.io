@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 
 type Project = {
   title: string
@@ -59,22 +59,21 @@ const projectList = computed(() =>
 );
 
 const selectedProject = ref<Project | null>(null);
+const modalOpen = ref(false);
 
 function openProject(project: Project) {
   if (project.href) {
     window.open(project.href, '_blank', 'noopener,noreferrer');
     return;
-  };
+  }
   selectedProject.value = project;
+  modalOpen.value = true;
 }
 
-function closeProject() {
+function onModalClose() {
+  modalOpen.value = false;
   selectedProject.value = null;
 }
-
-watch(selectedProject, (val) => {
-  document.body.style.overflow = val ? 'hidden' : '';
-});
 </script>
 
 <template>
@@ -107,7 +106,7 @@ watch(selectedProject, (val) => {
             </p>
           </div>
 
-          <p class="mt-3 text-sm leading-6 text-[#b0b0b0]">
+          <p class="mt-3 text-sm leading-6 text-[#848484]">
             {{ project.description }}
           </p>
         </div>
@@ -116,7 +115,7 @@ watch(selectedProject, (val) => {
           <span
             v-for="tech in project.technologies"
             :key="tech"
-            class="rounded-md border border-[#303030] bg-[#222222] px-2.5 py-1 text-xs font-medium text-[#d1d1d1]"
+            class="rounded-md border border-[#303030] bg-[#222222] px-2.5 py-1 text-xs font-medium text-[#848484]"
           >
             {{ tech }}
           </span>
@@ -154,101 +153,49 @@ watch(selectedProject, (val) => {
       </article>
     </div>
 
-    <Teleport to="body">
-      <Transition
-        enter-active-class="transition duration-200 ease-out"
-        enter-from-class="opacity-0"
-        enter-to-class="opacity-100"
-        leave-active-class="transition duration-150 ease-in"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
+    <Modal
+      :model-value="modalOpen"
+      @update:model-value="onModalClose"
+    >
+      <template #header>
+        <h2 class="text-xl font-semibold text-[#f0f0f0]">
+          {{ selectedProject?.title }}
+        </h2>
+      </template>
+
+      <img
+        v-if="selectedProject?.image"
+        :src="selectedProject.image"
+        :alt="selectedProject.title"
+        class="mb-6 w-full rounded-xl border border-[#222] object-cover"
+        style="max-height: 320px;"
       >
-        <div
-          v-if="selectedProject"
-          class="fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-black/40 backdrop-blur-[2px]"
-          @click.self="closeProject"
-        >
-          <Transition
-            enter-active-class="transition duration-200 ease-out"
-            enter-from-class="opacity-0 translate-y-3 scale-[0.99]"
-            enter-to-class="opacity-100 translate-y-0 scale-100"
-            leave-active-class="transition duration-150 ease-in"
-            leave-from-class="opacity-100 translate-y-0 scale-100"
-            leave-to-class="opacity-0 translate-y-3 scale-[0.99]"
+
+      <p class="text-base leading-7 font-medium text-[#848484]">
+        {{ selectedProject?.details || selectedProject?.description }}
+      </p>
+
+      <div class="mt-7 flex items-center justify-between gap-4 border-t border-[#1f1f1f] pt-6">
+        <div class="flex flex-wrap gap-2">
+          <span
+            v-for="tech in selectedProject?.technologies"
+            :key="tech"
+            class="rounded-md border border-[#252525] bg-[#1a1a1a] px-3 py-1 text-sm text-[#848484]"
           >
-            <div
-              v-if="selectedProject"
-              class="flex w-full max-w-2xl max-h-[85vh] flex-col rounded-2xl border border-[#2a2a2a] bg-[#161616] shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
-              @click.stop
-            >
-              <div class="flex shrink-0 items-start justify-between gap-4 border-b border-[#222] px-7 py-6">
-                <div>
-                  <h2 class="text-xl font-semibold text-[#f0f0f0]">
-                    {{ selectedProject.title }}
-                  </h2>
-                </div>
-
-                <button
-                  class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[#505050] transition hover:text-[#aaa]"
-                  aria-label="Close"
-                  @click="closeProject"
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1 1L13 13M13 1L1 13"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <div class="overflow-y-auto px-7 py-6">
-                <img
-                  v-if="selectedProject.image"
-                  :src="selectedProject.image"
-                  :alt="selectedProject.title"
-                  class="mb-6 w-full rounded-xl border border-[#222] object-cover"
-                  style="max-height: 320px;"
-                >
-
-                <p class="text-base leading-7 text-[#808080]">
-                  {{ selectedProject.details || selectedProject.description }}
-                </p>
-
-                <div class="mt-7 flex items-center justify-between gap-4 border-t border-[#1f1f1f] pt-6">
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      v-for="tech in selectedProject.technologies"
-                      :key="tech"
-                      class="rounded-md border border-[#252525] bg-[#1a1a1a] px-3 py-1 text-sm text-[#555]"
-                    >
-                      {{ tech }}
-                    </span>
-                  </div>
-
-                  <a
-                    v-if="selectedProject.github"
-                    :href="selectedProject.github"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="shrink-0 text-sm font-medium text-[#848484] transition hover:text-[#f0f0f0]"
-                  >
-                    Code →
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Transition>
+            {{ tech }}
+          </span>
         </div>
-      </Transition>
-    </Teleport>
+
+        <a
+          v-if="selectedProject?.github"
+          :href="selectedProject.github"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0 text-sm font-medium text-[#848484] transition hover:text-[#f0f0f0]"
+        >
+          Code →
+        </a>
+      </div>
+    </Modal>
   </div>
 </template>
