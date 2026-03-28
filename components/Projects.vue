@@ -185,9 +185,6 @@ watch(selectedProject, (val) => {
                   <h2 class="text-xl font-semibold text-[#f0f0f0]">
                     {{ selectedProject.title }}
                   </h2>
-                  <p class="mt-1.5 text-sm text-[#505050]">
-                    {{ selectedProject.technologies.join(' · ') }}
-                  </p>
                 </div>
 
                 <button
@@ -195,8 +192,19 @@ watch(selectedProject, (val) => {
                   aria-label="Close"
                   @click="closeProject"
                 >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1L13 13M13 1L1 13"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
                   </svg>
                 </button>
               </div>
