@@ -61,7 +61,10 @@ const projectList = computed(() =>
 const selectedProject = ref<Project | null>(null);
 
 function openProject(project: Project) {
-  if (project.href) return;
+  if (project.href) {
+    window.open(project.href, '_blank', 'noopener,noreferrer');
+    return;
+  };
   selectedProject.value = project;
 }
 
@@ -88,8 +91,7 @@ watch(selectedProject, (val) => {
       <article
         v-for="project in projectList"
         :key="project.title"
-        class="group flex h-full flex-col rounded-xl border border-[#303030] bg-[#171717] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4a4a4a]"
-        :class="!project.href ? 'cursor-pointer' : ''"
+        class="group flex h-full flex-col rounded-xl border border-[#303030] bg-[#171717] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4a4a4a] cursor-pointer"
         @click="openProject(project)"
       >
         <div class="flex flex-1 flex-col">
@@ -179,7 +181,6 @@ watch(selectedProject, (val) => {
               class="flex w-full max-w-2xl max-h-[85vh] flex-col rounded-2xl border border-[#2a2a2a] bg-[#161616] shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
               @click.stop
             >
-              <!-- Header -->
               <div class="flex shrink-0 items-start justify-between gap-4 border-b border-[#222] px-7 py-6">
                 <div>
                   <h2 class="text-xl font-semibold text-[#f0f0f0]">
@@ -209,7 +210,6 @@ watch(selectedProject, (val) => {
                 </button>
               </div>
 
-              <!-- Body -->
               <div class="overflow-y-auto px-7 py-6">
                 <img
                   v-if="selectedProject.image"
