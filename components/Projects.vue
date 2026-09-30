@@ -10,6 +10,14 @@ type Project = {
   status?: string
   image?: string
   details?: string
+  addons?: Addon[]
+}
+
+type Addon = {
+  title: string
+  description: string
+  technologies: string[]
+  github?: string
 }
 
 const props = defineProps<{
@@ -26,7 +34,16 @@ const defaultProjects: Project[] = [
     status: 'Open source',
     image: '/claude-limits.jpg',
     details:
-      "This project started as a replacement for Usage for Claude, the app I used before to track my Claude limits. It shows the 5-hour, weekly and Fable limits as a small pie in the macOS menu bar, and one click opens a panel with all three and when they reset. A dashboard shows every limit window on a chart, along with the tokens I used per project and what they would cost on the API. There is no server and nothing polls in the background: Claude Code's status line records the limits on every turn. I also built an Obsidian plugin, so I can check the same dashboard on my phone. It's open source and quick to set up on any Mac.",
+      "This project started as a replacement for Usage for Claude, the app I used before to track my Claude limits. It shows the 5-hour, weekly and Fable limits as a small pie in the macOS menu bar, and one click opens a panel with all three and when they reset. A dashboard shows every limit window on a chart, along with the tokens I used per project and what they would cost on the API. There is no server and nothing polls in the background: Claude Code's status line records the limits on every turn. It's open source and quick to set up on any Mac.",
+    addons: [
+      {
+        title: 'Obsidian Plugin',
+        description:
+          'Shows the same dashboard inside Obsidian. My vault syncs to my iPhone, so a Home Screen icon opens my limits on the phone too. A Claude Code hook copies the dashboard and its data into the vault after every turn.',
+        technologies: ['JavaScript', 'Obsidian'],
+        github: 'https://github.com/Reconnact/claude-limits-obsidian',
+      },
+    ],
   },
   {
     title: 'Berührt im Sein',
@@ -206,6 +223,47 @@ function onModalClose() {
         >
           Code →
         </a>
+      </div>
+
+      <div
+        v-for="addon in selectedProject?.addons"
+        :key="addon.title"
+        class="mt-6 rounded-xl border border-[#252525] bg-[#1a1a1a] p-5"
+      >
+        <div class="flex items-baseline justify-between gap-4">
+          <div>
+            <h3 class="text-base font-semibold text-[#f0f0f0]">
+              {{ addon.title }}
+            </h3>
+            <p class="mt-0.5 text-xs font-medium uppercase tracking-wide text-[#848484]">
+              Add-on
+            </p>
+          </div>
+
+          <a
+            v-if="addon.github"
+            :href="addon.github"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="shrink-0 text-sm font-medium text-[#848484] transition hover:text-[#f0f0f0]"
+          >
+            Code →
+          </a>
+        </div>
+
+        <p class="mt-3 text-sm leading-6 font-medium text-[#848484]">
+          {{ addon.description }}
+        </p>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span
+            v-for="tech in addon.technologies"
+            :key="tech"
+            class="rounded-md border border-[#252525] bg-[#161616] px-2.5 py-1 text-xs font-medium text-[#848484]"
+          >
+            {{ tech }}
+          </span>
+        </div>
       </div>
     </Modal>
   </div>
