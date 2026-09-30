@@ -18,6 +18,17 @@ const props = defineProps<{
 
 const defaultProjects: Project[] = [
   {
+    title: 'Claude Limits',
+    description:
+      'A macOS menu bar app and dashboard that keeps my Claude usage limits in view, with the full history of every limit window.',
+    technologies: ['Swift', 'JavaScript', 'Bash'],
+    github: 'https://github.com/Reconnact/claude-limits',
+    status: 'Open source',
+    image: '/claude-limits.jpg',
+    details:
+      "This project started as a replacement for Usage for Claude, the app I used before to track my Claude limits. It shows the 5-hour, weekly and Fable limits as a small pie in the macOS menu bar, and one click opens a panel with all three and when they reset. A dashboard shows every limit window on a chart, along with the tokens I used per project and what they would cost on the API. There is no server and nothing polls in the background: Claude Code's status line records the limits on every turn. I also built an Obsidian plugin, so I can check the same dashboard on my phone. It's open source and quick to set up on any Mac.",
+  },
+  {
     title: 'Berührt im Sein',
     description:
       'A minimal, well-structured website with clear UX and semantic layout, designed to present holistic therapy services and guide users toward contact conversion.',
