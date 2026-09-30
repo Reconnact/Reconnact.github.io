@@ -30,7 +30,7 @@ watch(() => props.modelValue, (val) => {
     >
       <div
         v-if="modelValue"
-        class="fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-black/40 backdrop-blur-[2px]"
+        class="fixed inset-0 z-50 flex items-center justify-center px-4 py-8 bg-black/50 backdrop-blur-md"
         @click.self="close"
       >
         <Transition
@@ -43,10 +43,10 @@ watch(() => props.modelValue, (val) => {
         >
           <div
             v-if="modelValue"
-            class="flex w-full max-w-2xl max-h-[85vh] flex-col rounded-2xl border border-[#2a2a2a] bg-[#161616] shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
+            class="flex w-full max-w-2xl max-h-[85vh] flex-col rounded-2xl border border-white/10 bg-[#161616]/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_60px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
             @click.stop
           >
-            <div class="flex shrink-0 items-start justify-between gap-4 border-b border-[#222] px-7 py-6">
+            <div class="flex shrink-0 items-start justify-between gap-4 border-b border-white/[0.06] px-7 py-6">
               <slot name="header" />
 
               <button

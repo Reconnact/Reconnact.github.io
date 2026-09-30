@@ -51,7 +51,7 @@ onMounted(() => {
     >
       <div
         v-if="visible"
-        class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-2.5rem)] max-w-lg -translate-x-1/2 rounded-xl border border-[#2a2a2a] bg-[#161616] px-5 py-4 shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
+        class="fixed bottom-5 left-1/2 z-50 w-[calc(100%-2.5rem)] max-w-lg -translate-x-1/2 rounded-xl border border-white/10 bg-[#161616]/85 px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_16px_48px_rgba(0,0,0,0.5)] backdrop-blur-xl"
         role="dialog"
         aria-label="Cookie consent"
       >
@@ -69,7 +69,7 @@ onMounted(() => {
 
           <div class="flex shrink-0 gap-2">
             <button
-              class="rounded-lg border border-[#303030] bg-transparent px-4 py-1.5 text-sm font-medium text-[#848484] transition-all duration-200 hover:border-[#4a4a4a] hover:text-[#f7f9fa]"
+              class="rounded-lg border border-white/10 bg-transparent px-4 py-1.5 text-sm font-medium text-[#848484] transition-all duration-200 hover:border-white/25 hover:text-[#f7f9fa]"
               @click="decline"
             >
               Decline

@@ -1,10 +1,10 @@
 <template>
   <div class="py-14 relative text-[#f7f9fa]">
     <div class="mx-auto flex flex-col gap-2">
-      <div class="flex w-full justify-evenly bg-[#303030] h-9 p-1 rounded-lg relative overflow-hidden">
+      <div class="flex w-full justify-evenly bg-white/[0.06] border border-white/[0.06] h-9 p-1 rounded-lg relative overflow-hidden">
         <div
-          class="absolute mx-1 w-[48%] sm:w-[48.4%] h-7 bg-[#171717] rounded-md transition-all duration-300 ease-in-out"
-          :class="{ 'slide-left': education, 'slide-right': work }"
+          class="absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] rounded-md transition-transform duration-300 ease-in-out"
+          :class="{ 'translate-x-full': education }"
         />
 
         <button
@@ -20,51 +20,50 @@
           Education
         </button>
       </div>
-      <div class="w-full border rounded-xl p-4 border-[#303030]">
-        <ul class="ml-10 border-l border-[#303030]">
-          <li
-            v-for="cvPlace in cvActiveList"
-            :key="cvPlace.name"
-            class="relative ml-10 py-4"
+      <div class="glass w-full rounded-xl p-4">
+        <Transition
+          name="cv"
+          mode="out-in"
+        >
+          <ul
+            :key="work ? 'work' : 'education'"
+            class="ml-10 border-l border-white/10"
           >
-            <a
-              target="_blank"
-              class="absolute -left-16 top-4 flex items-center justify-center rounded-full bg-slate-200"
-              :href="cvPlace.href"
+            <li
+              v-for="cvPlace in cvActiveList"
+              :key="cvPlace.name + cvPlace.start"
+              class="relative ml-10 py-4"
             >
-              <span class="relative flex shrink-0 overflow-hidden rounded-full w-12 h-12 border">
-                <img
-                  class="aspect-square h-[80%] object-contain m-auto"
-                  :alt="cvPlace.name"
-                  :src="cvPlace.src"
-                  :class="cvPlace.srcClass" 
-                >
-              </span>
-            </a>
-            <div class="flex flex-1 flex-col justify-start gap-1">
-              <time class="text-xs text-[#848484] font-medium">
-                <span>{{ cvPlace.start }}</span>
-                <span> - </span>
-                <span>{{ cvPlace.end }}</span>
-              </time>
-              <h2 class="font-semibold leading-none">
-                {{ cvPlace.name }}
-              </h2>
-              <p class="text-sm text-[#848484] font-medium">
-                {{ cvPlace.description }}
-              </p>
-              <ul class="ml-4 list-outside list-disc">
-                <li
-                  v-for="note, i in cvPlace.notes"
-                  :key="i"
-                  class="prose pr-8 text-sm dark:prose-invert"
-                >
-                  {{ note }}
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
+              <a
+                target="_blank"
+                class="absolute -left-16 top-4 flex items-center justify-center rounded-full bg-slate-200"
+                :href="cvPlace.href"
+              >
+                <span class="relative flex shrink-0 overflow-hidden rounded-full w-12 h-12 border">
+                  <img
+                    class="aspect-square h-[80%] object-contain m-auto"
+                    :alt="cvPlace.name"
+                    :src="cvPlace.src"
+                    :class="cvPlace.srcClass"
+                  >
+                </span>
+              </a>
+              <div class="flex flex-1 flex-col justify-start gap-1">
+                <time class="text-xs text-[#848484] font-medium">
+                  <span>{{ cvPlace.start }}</span>
+                  <span> - </span>
+                  <span>{{ cvPlace.end }}</span>
+                </time>
+                <h2 class="font-semibold leading-none">
+                  {{ cvPlace.name }}
+                </h2>
+                <p class="text-sm text-[#848484] font-medium">
+                  {{ cvPlace.description }}
+                </p>
+              </div>
+            </li>
+          </ul>
+        </Transition>
       </div>
     </div>
   </div>
@@ -80,93 +79,86 @@ const cvActiveList = computed(() => {
   return work.value ? workPlaceList : educationList;
 });
 
-const workPlaceList: Array<{ 
-  name: string; 
-  href: string; 
-  src: string; 
-  description: string; 
-  start: string; 
-  end: string; 
-  notes: null; 
+type CvPlace = {
+  name: string;
+  href: string;
+  src: string;
+  description: string;
+  start: string;
+  end: string;
   srcClass?: string;
-}> = [
-  { 
-    name: 'Digio AG', 
-    href: 'https://www.digio.swiss', 
-    src: '/digio.png', 
-    description: 'Software Developer', 
-    start: 'August 2024', 
-    end: 'Present', 
-    notes: null
-  }, 
-  { 
-    name: 'Digio AG', 
-    href: 'https://www.digio.swiss', 
-    src: '/digio.png', 
-    description: 'Intern - Software Developer', 
-    start: 'August 2023', 
-    end: 'July 2024', 
-    notes: null
+};
+
+const workPlaceList: CvPlace[] = [
+  {
+    name: 'Digio AG',
+    href: 'https://www.digio.swiss',
+    src: '/digio.png',
+    description: 'Software Developer',
+    start: 'August 2024',
+    end: 'Present',
+  },
+  {
+    name: 'Digio AG',
+    href: 'https://www.digio.swiss',
+    src: '/digio.png',
+    description: 'Intern - Software Developer',
+    start: 'August 2023',
+    end: 'July 2024',
   }
 ];
 
-const educationList: Array<{ 
-  name: string; 
-  href: string; 
-  src: string; 
-  description: string; 
-  start: string; 
-  end: string; 
-  notes: null; 
-  srcClass?: string;
-}> = [
-  { 
-    name: 'University of Applied Sciences', 
-    href: 'https://www.htw-berlin.de/en/', 
-    src: '/htw.png', 
+const educationList: CvPlace[] = [
+  {
+    name: 'University of Applied Sciences',
+    href: 'https://www.htw-berlin.de/en/',
+    src: '/htw.png',
     srcClass: '!h-3/4',
-    description: 'Bsc in Business Information Technology', 
-    start: 'October 2025', 
-    end: 'Present', 
-    notes: null
-  }, 
-  { 
-    name: 'Eastern Switzerland University of Applied Sciences', 
-    href: 'https://www.ost.ch/en/', 
-    src: '/ost.png', 
+    description: 'Bsc in Business Information Technology',
+    start: 'October 2025',
+    end: 'Present',
+  },
+  {
+    name: 'Eastern Switzerland University of Applied Sciences',
+    href: 'https://www.ost.ch/en/',
+    src: '/ost.png',
     srcClass: '!h-full',
-    description: 'Bsc in Business Information Technology', 
-    start: 'September 2024', 
-    end: 'September 2025', 
-    notes: null
-  }, 
-  { 
-    name: 'Bildungszentrum Zürichsee', 
-    href: 'https://www.bzz.ch/', 
-    src: '/ims.png', 
-    description: 'Information Technologist (Federal VET Diploma) - Specialization in Application Development', 
-    start: 'August 2020', 
-    end: 'July 2024', 
-    notes: null
-  }, 
-  { 
+    description: 'Bsc in Business Information Technology',
+    start: 'September 2024',
+    end: 'September 2025',
+  },
+  {
+    name: 'Bildungszentrum Zürichsee',
+    href: 'https://www.bzz.ch/',
+    src: '/ims.png',
+    description: 'Information Technologist (Federal VET Diploma) - Specialization in Application Development',
+    start: 'August 2020',
+    end: 'July 2024',
+  },
+  {
     name: 'Kantonsschule Hottingen',
     href: 'https://www.ksh.ch/',
     src: '/ims.png',
     description: 'Professional Baccalaureate, Business and Services',
     start: 'August 2020',
     end: 'July 2024',
-    notes: null
   }
 ];
 </script>
 
 <style lang="scss">
-.slide-left {
-  transform: translateX(52%);
+.cv-enter-active,
+.cv-leave-active {
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.slide-right {
-  transform: translateX(-52%);
-} 
+.cv-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.cv-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
 </style>

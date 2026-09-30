@@ -4,9 +4,9 @@
       alt="Portrait"
       width="175"
       height="175"
-      class="rounded-lg transition-transform duration-300 transform hover:scale-110"
+      class="rounded-xl ring-1 ring-white/10 shadow-[0_0_48px_rgba(255,255,255,0.06)] transition-transform duration-300 transform hover:scale-110"
       style="color: transparent;"
-      src="/me.png"
+      src="/me.jpg"
     >
     <div class="flex flex-col">
       <h1 class="title text-4xl font-bold">

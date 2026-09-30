@@ -12,11 +12,11 @@
         :key="tech.name"
         class="flex justify-center"
       >
-        <div class="group flex flex-col items-center w-[60px]">
+        <div class="group flex flex-col items-center w-[60px] transition-transform duration-300 hover:-translate-y-1">
           <Icon
             :name="tech.icon"
             size="60"
-            style="color: #848484;"
+            class="text-[#848484] transition-colors duration-300 group-hover:text-[#f7f9fa]"
           />
           <span
             class="!text-[#848484] text-center text-sm font-semibold default-hover opacity-100 !transition-all !duration-500 group-hover:opacity-100 sm:opacity-0"

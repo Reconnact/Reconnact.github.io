@@ -102,6 +102,13 @@ function onModalClose() {
   modalOpen.value = false;
   selectedProject.value = null;
 }
+
+function trackPointer(event: MouseEvent) {
+  const card = event.currentTarget as HTMLElement;
+  const rect = card.getBoundingClientRect();
+  card.style.setProperty('--x', `${event.clientX - rect.left}px`);
+  card.style.setProperty('--y', `${event.clientY - rect.top}px`);
+}
 </script>
 
 <template>
@@ -118,7 +125,8 @@ function onModalClose() {
       <article
         v-for="project in projectList"
         :key="project.title"
-        class="group flex h-full flex-col rounded-xl border border-[#303030] bg-[#171717] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4a4a4a] cursor-pointer"
+        class="card group relative flex h-full flex-col rounded-xl p-5 transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+        @mousemove="trackPointer"
         @click="openProject(project)"
       >
         <div class="flex flex-1 flex-col">
@@ -143,7 +151,7 @@ function onModalClose() {
           <span
             v-for="tech in project.technologies"
             :key="tech"
-            class="rounded-md border border-[#303030] bg-[#222222] px-2.5 py-1 text-xs font-medium text-[#848484]"
+            class="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-medium text-[#848484]"
           >
             {{ tech }}
           </span>
@@ -195,7 +203,7 @@ function onModalClose() {
         v-if="selectedProject?.image"
         :src="selectedProject.image"
         :alt="selectedProject.title"
-        class="mb-6 w-full rounded-xl border border-[#222] object-cover"
+        class="mb-6 w-full rounded-xl border border-white/10 object-cover"
         style="max-height: 320px;"
       >
 
@@ -203,12 +211,12 @@ function onModalClose() {
         {{ selectedProject?.details || selectedProject?.description }}
       </p>
 
-      <div class="mt-7 flex items-center justify-between gap-4 border-t border-[#1f1f1f] pt-6">
+      <div class="mt-7 flex items-center justify-between gap-4 border-t border-white/[0.06] pt-6">
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tech in selectedProject?.technologies"
             :key="tech"
-            class="rounded-md border border-[#252525] bg-[#1a1a1a] px-3 py-1 text-sm text-[#848484]"
+            class="rounded-md border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-[#848484]"
           >
             {{ tech }}
           </span>
@@ -228,7 +236,7 @@ function onModalClose() {
       <div
         v-for="addon in selectedProject?.addons"
         :key="addon.title"
-        class="mt-6 rounded-xl border border-[#252525] bg-[#1a1a1a] p-5"
+        class="mt-6 rounded-xl border border-white/10 bg-white/[0.03] p-5"
       >
         <div class="flex items-baseline justify-between gap-4">
           <div>
@@ -259,7 +267,7 @@ function onModalClose() {
           <span
             v-for="tech in addon.technologies"
             :key="tech"
-            class="rounded-md border border-[#252525] bg-[#161616] px-2.5 py-1 text-xs font-medium text-[#848484]"
+            class="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-medium text-[#848484]"
           >
             {{ tech }}
           </span>
@@ -268,3 +276,42 @@ function onModalClose() {
     </Modal>
   </div>
 </template>
+<style scoped>
+.card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.card::before {
+  inset: 0;
+  background: radial-gradient(640px circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.06), transparent 40%);
+}
+
+.card::after {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(520px circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.45), transparent 40%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card:hover::before,
+.card:hover::after {
+  opacity: 1;
+}
+</style>
